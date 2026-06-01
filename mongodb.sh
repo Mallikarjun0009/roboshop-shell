@@ -29,6 +29,18 @@ else
     echo "You are root user"
 fi # fi means reverse of if, indicating condition end
 
+for package in $@
+do
+    yum list installed $package &>> $LOGFILE #check installed or not
+    if [ $? -ne 0 ] #if not installed
+    then
+        yum install $package -y &>> $LOGFILE # install the package
+        VALIDATE $? "Installation of $package" # validate
+    else
+        echo -e "$package is already installed ... $Y SKIPPING $N"
+    fi
+done
+
 cp mongo.repo /etc/yum.repos.d/mongo.repo &>> $LOGFILE
 
 VALIDATE $? "Copied MongoDB Repo"
