@@ -94,6 +94,6 @@ dnf install mongodb-mongosh -y &>> $LOGFILE
 
 VALIDATE $? "Installing MongoDB client"
 
-mongo --host $MONGDB_HOST </app/schema/catalogue.js &>> $LOGFILE
+mongosh --host mongodb.rpop.online </app/schema/catalogue.js &>> $LOGFILE
 
 VALIDATE $? "Loading catalouge data into MongoDB"
