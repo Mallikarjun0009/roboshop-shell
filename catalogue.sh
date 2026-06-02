@@ -65,7 +65,13 @@ unzip -o /tmp/catalogue.zip  &>> $LOGFILE
 
 VALIDATE $? "unzipping catalogue"
 
-npm install  &>> $LOGFILE
+cd /app
+
+rm -rf node_modules package-lock.json
+
+npm install mongodb@3.7.4
+
+npm install
 
 VALIDATE $? "Installing dependencies"
 

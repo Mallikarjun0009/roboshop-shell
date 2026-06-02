@@ -3,3 +3,12 @@ name=MongoDB Repository
 baseurl=https://repo.mongodb.org/yum/redhat/9/mongodb-org/7.0/x86_64/
 gpgcheck=0
 enabled=1
+
+
+# cd /app
+
+# rm -rf node_modules package-lock.json
+
+# npm install mongodb@3.7.4
+
+# npm install
