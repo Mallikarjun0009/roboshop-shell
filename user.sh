@@ -93,6 +93,15 @@ dnf install mongodb-mongosh -y &>> $LOGFILE
 
 VALIDATE $? "Installing MongoDB client"
 
+# mongosh --host mongodb.rpop.online </app/schema/user.js &>> $LOGFILE
+
+# VALIDATE $? "Loading user data into MongoDB"
+
 mongosh --host mongodb.rpop.online </app/schema/user.js &>> $LOGFILE
 
-VALIDATE $? "Loading user data into MongoDB"
+if [ $? -ne 0 ]
+then
+    echo -e "User data already exists ... $Y SKIPPING $N"
+else
+    echo -e "Loading user data into MongoDB ... $G SUCCESS $N"
+fi
